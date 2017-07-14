@@ -1,3 +1,52 @@
+#startBox{
+
+}
+
+#startDiv{
+
+}
+
+#startTextDiv{
+
+}
+
+#startText{
+
+}
+
+.startbtn{
+
+	border:2px #666 solid;
+	border-radius: 8px;
+	width:50%;
+	color:#fff;
+
+}
+
+#startYes{
+	background-color: #0a0;
+
+}
+
+#startNo{
+	background-color: #b00;
+
+}
+
+#startYes:hover{
+	background-color: #0e1;
+
+}
+
+#startNo:hover{
+	background-color: #f00;
+
+}
+
+.stTxt{
+	font-size: 16pt;
+}
+
 .answers{
 	text-align: center;
 	font-size: 14pt;
@@ -47,4 +96,17 @@
 
 #timer{
 	margin-top: 0px;
+}
+
+#hintDiv{
+	margin-top: 25px;
+}
+
+#hintBtn{
+	
+}
+
+#hints{
+	font-size: 12pt;
+	
 }
