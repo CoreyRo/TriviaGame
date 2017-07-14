@@ -61,9 +61,34 @@ $(document).ready(function($) {
 	});
 
 	function mainGame(){
-		$("#startBox").hide();
+		$("#startBox, #questionTextDiv, #timerDiv, .answers, #hintDiv").hide();
 		$("#mainGameBox").show().animateCss("bounceIn");
 		$("#hud").show().animateCss("fadeInUpBig");
+		setTimeout(wait, 1000);
+		function wait(){
+			$("#questionTextDiv").show().animateCss("zoomIn");
+			$("#timerDiv").show().animateCss("zoomIn");
+		}
+		setTimeout(btn1, 1800);
+		function btn1(){
+			$("#answer-one").show().animateCss("lightSpeedIn");
+		}
+		setTimeout(btn2, 2000);
+		function btn2(){
+			$("#answer-two").show().animateCss("lightSpeedIn");
+		}
+		setTimeout(btn3, 2200);
+		function btn3(){
+			$("#answer-three").show().animateCss("lightSpeedIn");
+		}
+		setTimeout(btn4, 2400);
+		function btn4(){
+			$("#answer-four").show().animateCss("lightSpeedIn");
+		}
+		setTimeout(btn5, 2800);
+		function btn5(){
+			$("#hintDiv").show().animateCss("bounceInUp");
+		}
 		for (var i = 0; i < 4; i++) {
 			$(answerTxts[i]).html(qOne.answers[i]);
 			$(answerBtns[i]).attr("value", qOne.answers[i]);
