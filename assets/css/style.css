@@ -1,3 +1,7 @@
+body{
+	background-image: url(../img/bg.jpg);
+}
+
 #startBox{
 
 }
@@ -14,6 +18,13 @@
 
 }
 
+.jumbotron{
+	background: linear-gradient(rgba(158,158,158,0.2), rgba(216,216,216,.2)) !important;
+	/*-webkit-text-stroke-width: 1px;
+   	-webkit-text-stroke-color: #fff;*/
+   	color:#fff;
+}
+
 .startbtn{
 
 	border:2px #666 solid;
@@ -24,21 +35,23 @@
 }
 
 #startYes{
-	background-color: #0a0;
-
+	background:linear-gradient(#0f1, #091);
+	 box-shadow: 3px 4px 6px #111;
 }
 
 #startNo{
-	background-color: #b00;
-
+	background:linear-gradient(#e00, #900);
+	box-shadow: 3px 4px 6px #111;
 }
 
 #startYes:hover{
+	background:none;
 	background-color: #0e1;
 
 }
 
 #startNo:hover{
+	background:none;
 	background-color: #f00;
 
 }
@@ -55,7 +68,7 @@
 	color:white;
 	background-color: #0af;
 	margin-top: 20px;
-  
+  	box-shadow: 3px 4px 6px #111;
     width:100%;
 }
 
@@ -63,8 +76,33 @@
 	border:2px #666 solid;
 	border-radius: 5px;
 	color:#000;
-	background-color: #3e0;
+	background-color: #0ff;
 
+}
+
+
+.answersWrong{
+	text-align: center;
+	font-size: 14pt;
+	border:2px #666 solid;
+	border-radius: 5px;
+	color:#000;
+	background-color: #f00;
+	margin-top: 20px;
+  	box-shadow: 3px 4px 6px #111;
+    width:100%;
+}
+
+.answersRight{
+	text-align: center;
+	font-size: 14pt;
+	border:2px #666 solid;
+	border-radius: 5px;
+	color:#000;
+	background-color: #3e0;
+	margin-top: 20px;
+  	box-shadow: 3px 4px 6px #111;
+    width:100%;
 }
 
 .answersTxt{
@@ -78,20 +116,26 @@
 
 #questionText{
 	font-size: 16pt;
+	color:#000;
 	
 }
 
 #questionTextDiv{
-	/*border:2px black solid;*/
+	
 	border: 2px black solid;
     padding: 25px;
     border-radius: 10px;
+    background: linear-gradient(#eee, #999) !important;
+    box-shadow: 3px 4px 6px #111;
 }
 
 #timerDiv{
 	border: 2px green solid;
 	margin-top: 30px;
 	border-radius: 5px;
+	background: linear-gradient(#eee, #999) !important;
+	box-shadow: 3px 4px 6px #111;
+	color:#000;
 }
 
 #timer{
@@ -103,11 +147,12 @@
 }
 
 #hintBtn{
-	
+	box-shadow: 3px 4px 6px #111;
 }
 
 #hints{
 	font-size: 12pt;
+
 	
 }
 

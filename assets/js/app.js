@@ -99,6 +99,8 @@ $(document).ready(function($) {
             //********************DOM animations********************
             $("#questionText").html(q1.question);
             $("#startBox, #questionTextDiv, #timerDiv, .answers, #hintDiv, #mainPointsBox").hide();
+            $(".answers").removeClass("answersRight");
+            $(".answers").removeClass("answersWrong");
 
             $("#mainGameBox").show().animateCss("bounceIn");
             $("#hud").show().animateCss("fadeInUpBig");
@@ -150,12 +152,14 @@ $(document).ready(function($) {
     $(".answers").on("click", function() {
         thisVal = $(this).val();
         console.log(thisVal);
-        var guess = $(this).val();
+        var guessVal = $(this).val();
+        var guess = $(this);
         debugger;
         if (thisVal === q1.correctAnswer) {
             //Right Answer
             console.log("YEAS");
 
+            $(this).addClass("answersRight");
 
             points += 1;
             $("#right").html("Correct: " + points).animateCss("rubberBand");
@@ -166,7 +170,7 @@ $(document).ready(function($) {
             function toPoints() {
                 $("#mainGameBox").hide();
                 $("#mainPointsBox").show().animateCss("zoomIn");
-                $("#pointsText").html('<h2 id="" class="points center-block">Correct! ' + guess + ' was right.</h2>');
+                $("#pointsText").html('<h2 id="" class="points center-block">Correct! ' + guessVal + ' was right.</h2>');
             }
             clearTimeout(intervalID);
             intervalID = setTimeout(correctb, 3400);
@@ -174,6 +178,8 @@ $(document).ready(function($) {
             function correctb() {
                 qPos += 1;
                 console.log("Question Array index " + qPos);
+
+
                 mainGame();
 
             }
@@ -181,7 +187,7 @@ $(document).ready(function($) {
             //Wrong Answer
             fails += 1;;
             $("#fail").html("Incorrect: " + fails).addClass("shake");
-
+            $(this).addClass("answersWrong");
             console.log("NARP");
             $("#mainGameBox").animateCss("zoomOut");
             setTimeout(toPoints, 800);
@@ -189,7 +195,7 @@ $(document).ready(function($) {
             function toPoints() {
                 $("#mainGameBox").hide();
                 $("#mainPointsBox").show().animateCss("zoomIn");
-                $("#pointsText").html('<h2 id="" class="points center-block">Sorry! ' + guess + ' was incorrect.</h2><h2 class="points">The correct answer was ' + q1.correctAnswer + '.');
+                $("#pointsText").html('<h2 id="" class="points center-block">Sorry! ' + guessVal + ' was incorrect.</h2><h2 class="points">The correct answer was ' + q1.correctAnswer + '.');
             }
             clearTimeout(intervalID);
             intervalID = setTimeout(correctb, 3400);
