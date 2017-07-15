@@ -63,7 +63,7 @@ $(document).ready(function($) {
 		correctAnswer: "All You Need Is Kill"
 	}
 	var thisVal;
-	var qsArray = [qOne, qTwo, qThr];
+	var qsArray = [qOne, qTwo, qThr, qFr, qFv, qSx, qSvn, qEt, qNn, qTn];
 	var q1;
 	var qPos = 0;
 	var points = 0;
@@ -149,68 +149,70 @@ $(document).ready(function($) {
 	//main game loop
 	function mainGame() {
 		if(qPos < 10){
-		clearTimeout(intervalID)
-		intervalID = setTimeout(runMain, 1200);
+			clearTimeout(intervalID)
+			intervalID = setTimeout(runMain, 1200);
 
-		function runMain() {
-			time = 15;
-			start();
-			//qPos is the position of the index, qPos starts at 0 so the index of the array will be 0
-			console.log("Question Array index " + qPos);
-			// q1 is the question at index qPos of the array, default qPos=0
-			q1 = qsArray[qPos];
-			console.log("current question" + qsArray[qPos].correctAnswer);
-			//shuffles the answers array for the buttons.
-			shuffle(q1.answers);
-			//********************DOM animations********************
-			$("#questionText").html(q1.question);
-			$("#startBox, #questionTextDiv, #timerDiv, .answers, #hintDiv, #mainPointsBox").hide();
-			$(".answers").removeClass("answersRight");
-			$(".answers").removeClass("answersWrong");
-			$("#mainGameBox").show().animateCss("bounceIn");
-			$("#hud").show().animateCss("fadeInUpBig");
-			setTimeout(wait, 1000);
+			function runMain() {
+				time = 15;
+				start();
+				//qPos is the position of the index, qPos starts at 0 so the index of the array will be 0
+				console.log("Question Array index " + qPos);
+				// q1 is the question at index qPos of the array, default qPos=0
+				q1 = qsArray[qPos];
+				console.log("current question" + qsArray[qPos].correctAnswer);
+				//shuffles the answers array for the buttons.
+				shuffle(q1.answers);
+				//********************DOM animations********************
+				$("#questionText").html(q1.question);
+				$("#startBox, #questionTextDiv, #timerDiv, .answers, #hintDiv, #mainPointsBox").hide();
+				$(".answers").removeClass("answersRight");
+				$(".answers").removeClass("answersWrong");
+				$("#mainGameBox").show().animateCss("bounceIn");
+				$("#hud").show().animateCss("fadeInUpBig");
+				setTimeout(wait, 1000);
 
-			function wait() {
-				$("#questionTextDiv").show().animateCss("zoomIn");
-				$("#timerDiv").show().animateCss("zoomIn");
-			}
-			setTimeout(btn1, 1800);
+				function wait() {
+					$("#questionTextDiv").show().animateCss("zoomIn");
+					$("#timerDiv").show().animateCss("zoomIn");
+				}
+				setTimeout(btn1, 1800);
 
-			function btn1() {
-				$("#answer-one").show().animateCss("bounceInLeft");
-			}
-			setTimeout(btn2, 2000);
+				function btn1() {
+					$("#answer-one").show().animateCss("bounceInLeft");
+				}
+				setTimeout(btn2, 2000);
 
-			function btn2() {
-				$("#answer-two").show().animateCss("bounceInRight");
-			}
-			setTimeout(btn3, 2200);
+				function btn2() {
+					$("#answer-two").show().animateCss("bounceInRight");
+				}
+				setTimeout(btn3, 2200);
 
-			function btn3() {
-				$("#answer-three").show().animateCss("bounceInLeft");
-			}
-			setTimeout(btn4, 2400);
+				function btn3() {
+					$("#answer-three").show().animateCss("bounceInLeft");
+				}
+				setTimeout(btn4, 2400);
 
-			function btn4() {
-				$("#answer-four").show().animateCss("bounceInRight");
-			}
-			setTimeout(btn5, 2800);
+				function btn4() {
+					$("#answer-four").show().animateCss("bounceInRight");
+				}
+				setTimeout(btn5, 2800);
 
-			function btn5() {
-				$("#hintDiv").show().animateCss("bounceInUp");
-			}
-			//**************************************************
-			//adds the answers to the buttons and gives them a value for the answers
-			for (var i = 0; i < 4; i++) {
-				$(answerTxts[i]).html(q1.answers[i]);
-				$(answerBtns[i]).attr("value", q1.answers[i]);
-			};
-			//checks the value of the clicked button vs. the property of the object "correct answer"
-		} // console.log(q1.answers);
+				function btn5() {
+					$("#hintDiv").show().animateCss("bounceInUp");
+				}
+				//**************************************************
+				//adds the answers to the buttons and gives them a value for the answers
+				for (var i = 0; i < 4; i++) {
+					$(answerTxts[i]).html(q1.answers[i]);
+					$(answerBtns[i]).attr("value", q1.answers[i]);
+				};
+				//checks the value of the clicked button vs. the property of the object "correct answer"
+			} // console.log(q1.answers);
+		}
 	}
 	$(".answers").on("click", function() {
 		thisVal = $(this).val();
+
 		console.log(thisVal);
 		var guessVal = $(this).val();
 		var guess = $(this);

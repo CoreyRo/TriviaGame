@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="
+	sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+ 	<!-- <script type="text/javascript" src="main.js"></script> -->
 	<title>api</title>
 </head>
 <body>
 <script type="text/javascript">
-	
+	console.log("hello");
 
 
-	
+var title = prompt("Name a movie");
+var noSpace = title.split(' ').join('+');
+// var title = "Big+Lebowski";
+var queryURL = "http://www.omdbapi.com/?t=" + noSpace + "&apikey=40e9cece"
+
+$.ajax({
+	url: queryURL
+	method: "GET"
+}).done(function (response) {
+	console.log(response);
+	console.log(response.Title);
+	$("#imgDiv").html("<img src='"+ response.Poster + "'>" );
+	$("#movieName").html(response.Title);
+	$("#movieYear").html(response.Year);
+	$("#movieRating").html(response.Rated);
+	$("#movieRuntime").html(response.Runtime);
+	$("#movieCast").html(response.Actors);
+	$("#moviePlot").html(response.Plot);
+
+});
+// $("#new").on("click", function(){
+// 	location.reload();
+// });
+</script>
+
+<div id="imgDiv"></div>
+<h1 id="movieName"></h1>
+<h2 id="movieYear"></h2>
+<h2 id="movieRating"></h2>
+<h2 id="movieRuntime"></h2>
+<h4 id="movieCast"></h4>
+<br>
+<span id="moviePlot"></span>
+<br>
+<!-- <button id="new" class="btn btn-primary">New search</button> -->
+
+
+
 </script>
 </body>
 </html>
