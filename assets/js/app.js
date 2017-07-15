@@ -38,8 +38,9 @@ $(document).ready(function($) {
 	var qsArray = [qOne, qTwo, qThr];
 	var q1;
 	var qPos = 0; 
-	
-	
+	var points = 0;
+	var fails = 0;
+	var intervalID;
 
 	//for the animate.css library
 	$.fn.extend({
@@ -68,7 +69,7 @@ $(document).ready(function($) {
 
 
 	//when page loads effects
-	$("#mainGameBox, #hud").hide();
+	$("#mainGameBox, #hud, #mainPointsBox").hide();
 	$("#startYes").on("click", function(){
 		$("#startBox").addClass("animated bounceOut");
 		setTimeout(wait, 800);
@@ -82,8 +83,10 @@ $(document).ready(function($) {
 
 	//main game loop
 	function mainGame(){
-		setTimeout(runMain,500);
+		clearTimeout(intervalID)
+		intervalID = setTimeout(runMain,1200);
 		function runMain(){
+
 			//qPos is the position of the index, qPos starts at 0 so the index of the array will be 0
 			console.log("Question Array index " + qPos);
 			
@@ -96,7 +99,8 @@ $(document).ready(function($) {
 
 			//********************DOM animations********************
 			$("#questionText").html(q1.question);
-			$("#startBox, #questionTextDiv, #timerDiv, .answers, #hintDiv").hide();
+			$("#startBox, #questionTextDiv, #timerDiv, .answers, #hintDiv, #mainPointsBox").hide();
+
 			$("#mainGameBox").show().animateCss("bounceIn");
 			$("#hud").show().animateCss("fadeInUpBig");
 			
@@ -138,12 +142,20 @@ $(document).ready(function($) {
 			$(".answers").on("click",function(){
 				thisVal = $(this).val();
 				console.log(thisVal);
+				var guess = $(this).val();
 				debugger;
-				if(thisVal == q1.correctAnswer){
+				if(thisVal === q1.correctAnswer){
 					//Right Answer
 					console.log("YEAS");
-					setTimeout(correctA, 100);
+					
+					qPos += 1;
+					points +=1;
+					$("#right").html("Correct: " + points).animateCss("rubberBand");
+					console.log("Question Array index " + qPos);
+					clearTimeout(intervalID);
+					intervalID = setTimeout(correctA, 1800);
 					function correctA(){
+						mainGame();
 
 						//on the second question it brings up, right here it is running twice. it runs through the 3 lines
 						//normally it runs once.
@@ -153,14 +165,31 @@ $(document).ready(function($) {
 						//the index of the question array is now increased by 1, so it goes to the next question.
 						//however when this runs again, it runs twice.
 						
-						qPos += 1;
-						console.log("Question Array index " + qPos);
-						mainGame();
+						
 					}
 				}
 				else{
 					//Wrong Answer
+					fails += 1;
+					;
+					$("#fail").html("Incorrect: " + fails).addClass("shake");
+					
 					console.log("NARP");
+					$("#mainGameBox").animateCss("zoomOut");
+					setTimeout(toPoints, 800);
+					function toPoints(){
+						$("#mainGameBox").hide();
+						$("#mainPointsBox").show().animateCss("zoomIn");
+						$("#pointsText").html('<h2 id="" class="points center-block">Sorry! ' + guess + ' was incorrect.</h2><h2 class="points">The correct answer was ' + q1.correctAnswer + '.' );
+					}
+					clearTimeout(intervalID);
+					intervalID = setTimeout(correctb, 3400);
+					function correctb(){
+						qPos += 1;
+						console.log("Question Array index " + qPos);
+						mainGame();
+						
+					}
 				}
 			});
 		}	// console.log(q1.answers);
