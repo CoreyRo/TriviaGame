@@ -20,7 +20,7 @@ $(document).ready(function($) {
 
 	//question objects
 	var qOne = {
-		question:'Stanley Kubrick and _________________ were the two writers of the screenplay for the 1968 film "2001: A Space Odyssey"?',
+		question:'Stanley Kubrick and _________________ were the two writers of the screenplay for the 1968 film "2001: A Space Odyssey".',
 		answers:["Arthur C. Clarke","Robert A. Heinlein", "L. Ron Hubbard", "Isaac Asimov"],
 		correctAnswer:"Arthur C. Clarke"
 	}
