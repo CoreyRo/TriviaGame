@@ -72,6 +72,29 @@ body{
     width:100%;
 }
 
+#hintsLeft{
+	text-align: center;
+}
+
+#hintBtn{
+	text-align: center;
+	border:2px #666 solid;
+	border-radius: 4px;
+	background-color: #0c2;
+	box-shadow: 3px 4px 6px #111;
+	padding: 5px 10px 5px 10px;
+}
+
+#hintBtn:hover{
+	
+	background-color: #0d2;
+}
+
+
+#hints{
+
+}
+
 .answers:hover{
 	border:2px #666 solid;
 	border-radius: 5px;
